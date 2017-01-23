@@ -1,0 +1,124 @@
+.page-canvas {
+    max-width: 835px;
+    width: auto;
+    background-color: #fff;
+    box-shadow: 0 0 225px rgba(255, 255, 255, 0.55);
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-clip: padding-box;
+    position: relative;
+}
+.signin-wrapper {
+    max-width: 585px;
+    padding: 0 10px;
+    width: auto;
+    margin: 0 auto 10px;
+    clear: both;
+    display: block;	
+}
+.signin-wrapper h1, .signup-wrapper h1, .resend-password-wrapper h1, .mobile-complete-wrapper h1 {
+    clear: both;
+    padding: 40px 0 20px;
+}
+h1 {
+    font-size: 24px;
+    line-height: 0.8;
+}
+h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizelegibility;
+}
+blockquote, dl, dd, h1, h2, h3, h4, h5, h6, figure, p, pre {
+    margin: 0;
+}
+fieldset {
+	margin-bottom: 16px;
+    border: 0 none;
+    padding: 0;
+}
+.visuallyhidden {
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+input, textarea, div[contenteditable] {
+    transition: background 0.2s linear 0s;
+}
+input, textarea, div[contenteditable], .t1-select {
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0;
+    outline: 0 none;
+    padding: 4px;
+    width: 210px;
+}
+.t1-label, input, textarea, div[contenteditable], .t1-select {
+    font-size: 13px;
+    line-height: 20px;
+    margin: 0;
+}
+input {
+    line-height: normal;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #8899a6;
+    opacity: 1;
+}
+.primary-btn, .following.first-hover .follow-btn:hover, .following .follow-btn, .following .follow-button.cancel-hover-style:hover, .following .follow-button, .notifying .device-follow-button, .button-group-item .content.selected {
+    background-color: #1da1f2;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.05));
+    border: 1px solid #3b88c3;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    color: #fff;
+}
+.btn
+{
+	background-repeat: no-repeat;
+	border-radius: 4px;
+	cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: normal;
+    padding: 8px 16px;
+    position: relative;
+}	
+input[type="checkbox"] {
+    background-color: transparent;
+    border: 0 none;
+    cursor: pointer;
+    height: auto;
+    line-height: normal;
+    margin: 3px 0;
+    padding: 0;
+    width: auto;
+    box-sizing: border-box;
+}
+.AppContent {
+    padding: 56px 14px 15px;
+    position: relative;
+}
+
+.StreamsHero-image {
+	height: 130px;
+	transition: height 300ms linear 0s;
+	height: 300px;
+	width: 100%;
+	background-position: center center;
+	background-size: 100% auto;
+	position: absolute;
+  	top: 0;
+  	left: 0;
+}

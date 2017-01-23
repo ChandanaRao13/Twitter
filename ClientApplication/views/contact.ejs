@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Enter your phone</title>
+<link rel='stylesheet' href='./stylesheets/style.css' />
+</head>
+<body>
+	<div class="signup-wrapper">
+	<div class="StreamsHero-image"
+				style="height: 50px;background-image: url(https://abs.twimg.com/a/1457130698/img/t1/lohp_streams_header_bg_v4.png);">
+	</div>
+		<h1>Enter your phone</h1>
+		<p class="invite-landing-desc">Your phone number keeps your
+			account secure, connects you to friends and makes login easier.</p>
+		<form id="phx-signup-form" method="POST" action='/userName'
+			class='afterContact'>
+			<div class="textbox">
+				<div class="prompt name">
+					<div class="field" data-fieldname="name">
+						<div id="choose-country" class="prompt choose-country">
+							<select id="device_country_code" class="t1-select"
+								name="device[country_code]">
+								<option data-iso-code="AF" value="93">Afghanistan</option>
+								<option data-iso-code="AL" value="355">Albania</option>
+								<option data-iso-code="DZ" value="213">Algeria</option>
+							</select>
+						</div>
+						<br /> <br /> <input id="phone" class="" type="text"
+							placeholder="Phone" aria-required="true" maxlength="20"
+							name="phone" value="" autocomplete="off"><br /> <br />
+							<p style="color:red;"><b><%= typeof errorMessage!='undefined' ? errorMessage+"" : '' %></b></p>
+							<br/><br/>
+						<div class="sign-up-box">
+							<button id="submit_button" class="submit button signup"
+								name="submit">Next</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="befound">
+			<p>We will text a verification code to this number. Standard SMS
+				fees may apply. We will never display your phone number to other
+				Twitter users.</p>
+				</div>
+		<div class="skip-format">
+	<a href="/userName" >Skip </a>
+	</div>
+		</div>
+	</div>
+</body>
+</html>

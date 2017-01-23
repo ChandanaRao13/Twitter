@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-App='twitterApp' ng-controller="loginController">
+  <head>
+    <title>Login</title>
+       <link rel='stylesheet' href='/stylesheets/LoginPage.css' />
+       <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+		<!-- Loading the AngularJS file from /public/angularJS folder -->
+		<script src="angularjs/angular_start.js"></script>
+		<script src="angularjs/loginController.js"></script>
+  </head>
+  <body>
+  <div class="signup-wrapper">
+	<div class="StreamsHero-image"
+				style="height: 50px;background-image: url(https://abs.twimg.com/a/1457130698/img/t1/lohp_streams_header_bg_v4.png);">
+	</div>
+<div id="page-container" class="AppContent wrapper wrapper-login">
+ 	<div class="page-canvas">
+    	<div class="signin-wrapper" data-login-message="">
+    		<h1>Log in to Twitter</h1>
+    			<fieldset>
+					<legend class="visuallyhidden">Log in</legend>
+						<div class="clearfix field">
+						<input class="js-username-field email-input js-initial-focus"  autocomplete="on" 
+						type="email" name="email" id="email" placeholder="Email" ng-model="email">
+						</div><br/>
+						<div class="clearfix field">
+						<input class="js-password-field" type="password" name="password" id="password" placeholder="Password" ng-model="password">
+						</div>
+					</fieldset>
+				<div class="captcha js-captcha"> </div>
+			<button name="submit" value='login' class="submit btn primary-btn" ng-click="submit();">Login</button>
+			
+			<div class="subchck">
+				<label class="t1-label remember">
+				<input type="checkbox" checked="checked" name="remember_me" value="1">
+				Remember me
+			
+				<a class="forgot" href="#">Forgot password?</a>
+				</label>
+			</div>
+			
+			</div>
+			<br>
+			<div class="col-md-12" style="margin: 10px;">
+					<div class="alert alert-danger" ng-hide="invalid_login">
+						<strong><font color = "red">Incorrect username or password</strong>
+					</div>
+					<div class="alert alert-danger" ng-hide="unexpected_error">
+						<strong>Unexpected error, try again</strong>
+					</div></font>
+				</div>
+			<br><br>
+			<div class="clearfix mobile has-sms" align='center'>
+				<p class="signup-helper">
+				New to Twitter?
+				<a id="login-signup-link" href="/signup">Sign up now</a>
+				</p>
+				<p class="sms-helper">
+				Already using Twitter via text message?
+				<a href="#">Activate your account</a>
+				</p>
+			</div>
+    </div>
+    </div>
+  </body>
+</html>

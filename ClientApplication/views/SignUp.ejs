@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign up for Twitter</title>
+<link rel='stylesheet' href='./stylesheets/style.css' />
+</head>
+<body>
+	<div class="signup-wrapper">
+	<div class="StreamsHero-image"
+				style="height: 50px;background-image: url(https://abs.twimg.com/a/1457130698/img/t1/lohp_streams_header_bg_v4.png);">
+	</div>
+	
+		<h1>Join Twitter Today</h1>
+		<form id="phx-signup-form" method="POST" action='/contact'
+			class='afterSignUp'>
+			<div class="textbox">
+				<div class="prompt name">
+					<div class="field" data-fieldname="name">
+						<input id="firstName" class="" type="text"
+							placeholder="First name" aria-required="true" maxlength="20"
+							name="firstName" value="" autocomplete="off"><br /> <br />
+						<input id="lastName" class="" type="text" placeholder="Last name"
+							aria-required="true" maxlength="20" name="lastName" value=""
+							autocomplete="off"><br /> <br /> <input id="email"
+							class="email-input" type="text" placeholder="Email"
+							aria-required="true" name="emailId" value="" autocomplete="off">
+						<br /> <br /> <input id="password" type="password"
+							placeholder="Password" aria-required="true" name="password"
+							value=""> <br /> <br />
+						<div class="sign-up-box">
+							<button id="submit_button" class="submit button signup"
+								name="submit">Sign Up</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class="befound">
+			<p>
+				By signing up, you agree to the <a class="legal-link"
+					target="_blank" href="/tos">Terms of Service</a> and <a
+					class="legal-link" target="_blank" href="/privacy">Privacy
+					Policy</a> , including <a class="legal-link" target="_blank"
+					href="https://support.twitter.com/articles/20170514">Cookie Use</a>
+				. Others will be able to find you by email or phone number when
+				provided.
+			</p>
+		</div>
+		
+		<p style="color:red;"><b><%= typeof errorMessage!='undefined' ? errorMessage+"" : '' %></b></p>
+		
+	</div>
+</body>
+</html>

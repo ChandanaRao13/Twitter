@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='twitterApp'>
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link
+	href="https://abs.twimg.com/a/1458271455/css/t1/twitter_core.bundle.css"
+	rel="stylesheet">
+<link
+	href="https://abs.twimg.com/a/1458271455/css/t1/twitter_more_1.bundle.css"
+	rel="stylesheet">
+<link
+	href="https://abs.twimg.com/a/1458271455/css/t1/twitter_more_2.bundle.css"
+	rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="/angularjs/angular_start.js"></script>
+<script src="/angularjs/tweetTextController.js"></script>
+<script src="/angularjs/whoToFollowController.js"></script>
+<script src="/angularjs/reTweetController.js"></script>
+<script src="/angularjs/searchController.js"></script>
+<script src="/angularjs/updateProfileController.js"></script>
+<style>
+/* Set black background color, white text and some padding */
+footer {
+	background-color: #555;
+	color: white;
+	padding: 15px;
+}
+</style>
+</head>
+<body
+	class="three-col logged-in user-style-chandana_rao13 ms-windows enhanced-mini-profile ProfilePage ProfilePage--withBlockedWarning supports-drag-and-drop"
+	dir="ltr" data-fouc-class-names="swift-loading"
+	ng-controller="reTweetController"
+	ng-controller="updateProfileController"
+	ng-controller="whoToFollowController">
+	<dib ng-controller='searchController'>
+	<div id="doc" class="route-profile">
+		<div class="topbar js-topbar">
+			<div class="global-nav" data-section-term="top_nav">
+				<div class="global-nav-inner">
+					<div class="container">
+						<h1 class="Icon Icon--bird bird-topbar-etched"
+							style="display: inline-block; width: 24px; height: 21px;">
+							<span class="visuallyhidden">Twitter</span>
+						</h1>
+						<div style="display: inline-block;" role="navigation">
+							<ul id="global-actions" class="nav js-global-actions">
+								<li id="global-nav-home" class="home active"><a
+									class="js-nav js-tooltip js-dynamic-tooltip" href="/userHome">
+										<span class="Icon Icon--home Icon--large"></span> <span
+										class="text">Home</span>
+								</a></li>
+								<li class="moments js-moments-tab "><a
+									class="js-nav js-tooltip js-dynamic-tooltip" href="#"> <span
+										class="Icon Icon--lightning Icon--large"></span> <span
+										class="text">Moments</span>
+								</a></li>
+								<li class="people notifications"><a
+									class="js-nav js-tooltip js-dynamic-tooltip" href="#"> <span
+										class="Icon Icon--notifications Icon--large"></span> <span
+										class="text">Notifications</span> <span class="count"></span></a>
+								</li>
+								<li class="dm-nav"><a
+									class="js-tooltip js-dynamic-tooltip global-dm-nav" href="#">
+										<span class="Icon Icon--dm Icon--large"></span> <span
+										class="text">Messages</span> <span class="dm-new"></span>
+								</a></li>
+							</ul>
+						</div>
+						<div class="pull-right" style="display: inline-block;">
+							<div role="search">
+								<form id="global-nav-search"
+									class="t1-form form-search js-search-form">
+									<label class="visuallyhidden" for="search-query">Search
+										query</label> <input id="search-query" class="search-input"
+										type="text" spellcheck="false" autocomplete="off" name="q"
+										placeholder="Search Twitter" aria-autocomplete="list"
+										aria-expanded="false" aria-owns="typeahead-dropdown-1"
+										ng-model="searchTag"> <span
+										class="search-icon js-search-action">
+										<button ng-click="getSearchTag();"
+											class="Icon Icon--search nav-search" tabindex="-1">
+											<span class="visuallyhidden">Search Twitter</span>
+										</button>
+									</span>
+								</form>
+							</div>
+							<ul class="nav right-actions">
+								<li id="user-dropdown" class="me dropdown session js-session"
+									data-global-action="t1me"><a id="user-dropdown-toggle"
+									class="btn js-tooltip settings dropdown-toggle js-dropdown-toggle"
+									data-placement="bottom" href="/logOut" role="button"
+									aria-haspopup="true" data-original-title="Profile and settings">
+										<img class="avatar size32" data-user-id="4861458151"
+										alt="Profile and settings"
+										src="https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png">
+								</a></li>
+								<li class="topbar-tweet-btn"
+									aria-labelledby="global-new-tweet-button" role="complementary">
+									<button id="global-new-tweet-button"
+										class="js-global-new-tweet js-tooltip btn primary-btn tweet-btn js-dynamic-tooltip">
+										<span class="Icon Icon--tweet Icon--large"></span> <span
+											class="text">Tweet</span>
+									</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="page-outer" ng-controller="updateProfileController">
+			<div ng-hide="userhomeFlag">
+				<div id="page-container" class="AppContent">
+					<div class="ProfilePage-	ingOverlay"></div>
+					<div class="ProfilePage-testForEditingCss"></div>
+					<div class="ProfileCanopy ProfileCanopy--withNav">
+						<div class="ProfileCanopy-inner">
+							<div class="ProfileCanopy-header u-bgUserColor"
+								style="margin-top: 0px;">
+								<div class="ProfileCanopy-headerBg">
+									<img class="" alt="" style="transform: none;"
+										src="/images/cover_pic.JPG">
+								</div>
+
+								<div class="AppContainer">
+									<div class="ProfileCanopy-avatar">
+										<div class="ProfileAvatar">
+											<img class="ProfileAvatar-image" alt="CHANDANA RAO"
+												src="/images/default_pic.JPG">
+										</div>
+									</div>
+									<button class="ProfileCanopy-addHeaderCallout" type="button">
+										<span class="ProfileCanopy-addHeaderCalloutText u-inlineBlock">
+											Make this space yours. Add a photo! </span>
+									</button>
+									<div class="ProfileCanopy-headerPromptAnchor"></div>
+								</div>
+							</div>
+
+							<div class="ProfileCanopy-navBar">
+								<div class="ProfilePage-editingOverlay"></div>
+								<div class="AppContainer">
+									<div class="Grid Grid--withGutter">
+										<div class="Grid-cell u-size1of3 u-lg-size1of4">
+											<div class="ProfileCanopy-card" role="presentation"
+												aria-hidden="true">
+												<div class="ProfileCardMini">
+													<div class="ProfileCardMini-details">
+														<div class="ProfileNameTruncated">
+															<div class="u-textTruncate u-inlineBlock">
+																<a
+																	class="ProfileNameTruncated-link u-textInheritColor js-nav js-action-profile-name"
+																	data-aria-label-part="" href="/chandana_rao13"
+																	tabindex="-1"> CHANDANA RAO </a>
+															</div>
+														</div>
+														<div class="ProfileCardMini-screenname">
+															<a
+																class="ProfileCardMini-screennameLink u-linkComplex js-nav u-dir"
+																dir="ltr" href="#" tabindex="-1"> @ <span
+																class="u-linkComplex-target">chandana_rao13</span>
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="Grid-cell u-size2of3 u-lg-size3of4">
+											<div class="ProfileCanopy-nav">
+												<div class="ProfileNav" data-user-id="4861458151"
+													role="navigation">
+													<ul class="ProfileNav-list">
+														<li class="ProfileNav-item ProfileNav-item--following">
+															<a
+															class="ProfileNav-stat ProfileNav-stat--link u-borderUserColor u-textCenter js-tooltip js-nav u-textUserColor"
+															href="" data-nav="following" ng-click="getGetTweets();">
+																<span class="ProfileNav-label"
+																ng-click="getGetTweets();">Tweets</span> <span
+																class="ProfileNav-value" data-is-compact="false"
+																ng-click="getGetTweets();"><%= tweetCount %></span>
+														</a>
+														</li>
+														<li class="ProfileNav-item ProfileNav-item--following">
+															<a
+															class="ProfileNav-stat ProfileNav-stat--link u-borderUserColor u-textCenter js-tooltip js-nav u-textUserColor"
+															href="" data-nav="following"
+															ng-click="getFollowingList();"> <span
+																class="ProfileNav-label" ng-click="getFollowingList();">Following</span>
+																<span class="ProfileNav-value" data-is-compact="false"
+																ng-click="getFollowingList();"><%= followingCount
+																	%></span>
+														</a>
+														</li>
+														<li class="ProfileNav-item ProfileNav-item--followers">
+															<a
+															class="ProfileNav-stat ProfileNav-stat--link u-borderUserColor u-textCenter js-tooltip js-nav u-textUserColor"
+															href="" data-nav="followers"
+															data-original-title="1 Follower"
+															ng-click="getFollowerList();"> <span
+																class="ProfileNav-label" ng-click="getFollowerList();">Followers</span>
+																<span class="ProfileNav-value"
+																ng-click="getFollowerList();"><%= followerCount%></span>
+														</a>
+														</li>
+														<li ng-hide="showProfile"
+															class="ProfileNav-item ProfileNav-item--more dropdown is-hidden"
+															style="">
+														<li
+															class="ProfileNav-item ProfileNav-item--userActions u-floatRight u-textRight with-rightCaret ">
+															<div class="UserActions u-textLeft">
+																<button class="UserActions-editButton edit-button btn"
+																	data-scribe-element="profile_edit_button" type="button" ng-click="updateProfile();">
+																	<span class="button-text">Edit profile</span>
+																</button>
+																<div class="ProfilePage-editingButtons"></div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="AppContainer">
+						<div class="AppContent-main content-main u-cf"
+							aria-labelledby="content-main-heading" role="main">
+							<div class="Grid Grid--withGutter">
+
+								<div class="Grid-cell u-size1of3 u-lg-size1of4">
+									<div class="Grid Grid--withGutter">
+										<div class="Grid-cell">
+											<div class="ProfileSidebar ProfileSidebar--withLeftAlignment">
+												<div class="ProfileHeaderCard">
+													<div ng-hide="showProfile">
+														<br /> <br /> <br />
+														<h1 class="ProfileHeaderCard-name">
+															<a
+																class="ProfileHeaderCard-nameLink u-textInheritColor js-nav "
+																href="/userProfile"><%= fullName %></a>
+														</h1>
+														<h2
+															class="ProfileHeaderCard-screenname u-inlineBlock u-dir"
+															dir="ltr">
+															<a
+																class="ProfileHeaderCard-screennameLink u-linkComplex js-nav"
+																href="/userProfile"><span
+																class="u-linkComplex-target"><%= twitterHandle %></span>
+															</a>
+														</h2>
+														<% if(locationInfo!=''){ %>
+														<p class="ProfileHeaderCard-bio u-dir" dir="ltr"></p>
+														<div class="ProfileHeaderCard-location">
+															<span class="Icon Icon--geo Icon--medium"></span> <span
+																class="ProfileHeaderCard-locationText u-dir" dir="ltr">
+																<a href="#"><%= locationInfo %></a>
+															</span>
+														</div>
+														<% } %>
+													<% if(birthDate!=''){ %>
+														<div class="ProfileHeaderCard-birthdate ">
+															<span class="Icon Icon--balloon Icon--medium"></span> <span
+																class="ProfileHeaderCard-birthdateText u-dir" dir="ltr">
+																<span class="js-tooltip"> <%= birthDate %></span>
+															</span>
+														</div>
+														<% } %>
+														<% if(contactInfo!=''){ %>
+														<div class="ProfileHeaderCard-birthdate ">
+															<span class="Icon Icon--balloon Icon--medium"></span> <span
+																class="ProfileHeaderCard-birthdateText u-dir" dir="ltr">
+																<span class="js-tooltip"> <%= contactInfo %></span>
+															</span>
+														</div>
+														<% } %>
+																								
+														<div class="ProfileMessagingActions">
+															<div class="ProfileMessagingActions-actionsContainer">
+															</div>
+														</div>
+														
+													</div>
+
+													<div ng-hide="updateProfile">
+														<br /> <br /><br /> <br />
+														<form action="/updateProfile" method="post">
+															<input type="text" name="firstName"
+																value="<%= firstName %>" placeholder="First Name"
+																disabled> <input type="text" name="lastName"
+																ng-init="lastName ='<%= lastName %>'"
+																placeholder="Last Name" ng-model="lastName" disabled>
+															<input type="text" name="userName"
+																ng-init="userName='<%= userName %>'"
+																placeholder="Username" ng-model="userName"> <input
+																type="date" name="birthDate"
+																ng-init="birthDate='<%= birthDate %>'" placeholder="Date of Birth"
+																ng-model="birthDate"> <input type="text"
+																name="contactInfo"
+																ng-init="contactInfo='<%= contactInfo %>'"
+																placeholder="Phone No" ng-model="contactInfo"> <input
+																type="text" name="locationInfo"
+																ng-init="locationInfo='<%= locationInfo %>'"
+																placeholder="Location" ng-model="locationInfo">
+															<button class="btn btn-primary" ng-click="saveChanges();">Save
+																Changes</button>
+															<button class="btn btn-primary"
+																ng-click="cancelChanges();">Cancel</button>
+														</form>
+													</div>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="Grid-cell u-size2of3 u-lg-size3of4">
+									<div class="Grid Grid--withGutter">
+										<div class="Grid-cell">
+											<div class="js-profileClusterFollow"></div>
+										</div>
+										<div class="Grid-cell u-lg-size2of3 ">
+											<div class="ProfileHeading" ng-hide="myTweets">
+												<br /> <br /> <br />
+												<div class="ProfileHeading-spacer"></div>
+												<div class="ProfileHeading-content ">
+													<h2 id="content-main-heading"
+														class="ProfileHeading-title u-hiddenVisually ">Tweets</h2>
+													<ul class="ProfileHeading-toggle">
+														<li class="ProfileHeading-toggleItem is-active "
+															data-element-term="tweets_toggle"><a
+															class="ProfileHeading-toggleLink js-nav"
+															data-nav="tweets_with_replies_toggle" href="#">
+																Tweets </a></li>
+														<li class="ProfileHeading-toggleItem u-textUserColor"
+															data-element-term="tweets_with_replies_toggle"><a
+															class="ProfileHeading-toggleLink js-nav"
+															data-nav="tweets_with_replies_toggle" href="#">
+																Tweets & replies </a></li>
+													</ul>
+												</div>
+											</div>
+											<div id="timeline" ng-hide="myTweets">
+												<div class="stream-container conversations-enabled ">
+													<div class="stream-item js-new-items-bar-container"></div>
+													<div class="stream">
+														<ol id="stream-items-id"
+															class="stream-items js-navigable-stream">
+															<li id="stream-item-tweet-710935059583279104"
+																class="js-stream-item stream-item stream-item expanding-stream-item ">
+
+
+																<% if(tweetContent.length >0){ for(var i=0; i <
+																tweetContent.length; i++) { if
+																(tweetContent[i].originalTweetFirstName !=null){ %>
+																<div
+																	class="tweet original-tweet js-original-tweet js-stream-tweet js-actionable-tweet js-profile-popup-actionable has-cards ">
+																	<div class="context">
+																		<div class="tweet-context with-icn ">
+																			<span class="Icon Icon--small Icon--retweeted"></span>
+																			<span class="js-retweet-text"> <a
+																				class="pretty-link js-user-profile-link"
+																				data-user-id="25649945" href="/ranjans"> <b>You</b>
+																			</a> Retweeted
+																			</span>
+																		</div>
+																	</div>
+																	<div class="content">
+																		<div class="stream-item-header">
+																			<a
+																				class="account-group js-account-group js-action-profile js-user-profile-link js-nav"
+																				href="#"> <img
+																				class="avatar js-action-profile-avatar" alt=""
+																				src="http://learngroup.org/assets/images/logos/default_male.jpg">
+																				<strong
+																				class="fullname js-action-profile-name show-popup-with-id"><%=
+																					tweetContent[i].tweetOwnerIdFirstName %> <%=
+																					tweetContent[i].tweetOwnerIdLastName %></strong>
+																				<span class="username js-action-profile-name">
+																					<b><%=
+																						tweetContent[i].tweetOwnerIdTwitterHandle %></b>
+																			</span>
+																			</a> <small class="time"> <a
+																				class="tweet-timestamp js-permalink js-nav js-tooltip"
+																				href="#"> </a>
+																			</small>
+																		</div>
+
+																		<div class="js-tweet-text-container">
+																			<p class="TweetTextSize js-tweet-text tweet-text"
+																				lang="en" data-aria-label-part="0"><%=
+																				tweetContent[i].twitterText %></p>
+																		</div>
+
+
+																		<div class="stream-item-footer">
+																			<div class="ProfileTweet-actionList js-actions"
+																				aria-label="Tweet actions" role="group">
+																				<div
+																					class="ProfileTweet-action ProfileTweet-action--retweet js-toggleState js-toggleRt">
+																					<button
+																						class="ProfileTweet-actionButton js-actionButton js-actionRetweet"
+																						type="button" data-modal="ProfileTweet-retweet">
+																						<div class="IconContainer js-tooltip"
+																							title="Retweet">
+																							<span class="Icon Icon--retweet"></span> <span
+																								class="u-hiddenVisually">Retweet</span>
+																						</div>
+																						<div class="IconTextContainer">
+																					</button>
+																					<button
+																						class="ProfileTweet-actionButtonUndo js-actionButton js-actionRetweet"
+																						type="button" data-modal="ProfileTweet-retweet">Retweet</button>
+																				</div>
+																			</div>
+
+																		</div>
+																	</div>
+																</div> <% } else { %>
+																<div
+																	class="tweet original-tweet js-original-tweet js-stream-tweet js-actionable-tweet js-profile-popup-actionable has-cards ">
+																	<div class="context"></div>
+																	<div class="content">
+																		<div class="stream-item-header">
+																			<a
+																				class="account-group js-account-group js-action-profile js-user-profile-link js-nav"
+																				href="#"> <img
+																				class="avatar js-action-profile-avatar" alt=""
+																				src="http://learngroup.org/assets/images/logos/default_male.jpg">
+																				<strong
+																				class="fullname js-action-profile-name show-popup-with-id"><%=
+																					tweetContent[i].tweetOwnerIdFirstName %> <%=
+																					tweetContent[i].tweetOwnerIdLastName %></strong>
+																				<span class="username js-action-profile-name">
+																					<b><%=
+																						tweetContent[i].tweetOwnerIdTwitterHandle %></b>
+																			</span>
+																			</a> <small class="time"> <a
+																				class="tweet-timestamp js-permalink js-nav js-tooltip"
+																				href="#"> </a>
+																			</small>
+																		</div>
+
+																		<div class="js-tweet-text-container">
+																			<p class="TweetTextSize js-tweet-text tweet-text"
+																				lang="en" data-aria-label-part="0"><%=
+																				tweetContent[i].twitterText %></p>
+																		</div>
+
+
+																		<div class="stream-item-footer">
+																			<div class="ProfileTweet-actionList js-actions"
+																				aria-label="Tweet actions" role="group">
+																				<div
+																					class="ProfileTweet-action ProfileTweet-action--retweet js-toggleState js-toggleRt">
+																					<button
+																						class="ProfileTweet-actionButton js-actionButton js-actionRetweet"
+																						type="button" data-modal="ProfileTweet-retweet">
+																						<div class="IconContainer js-tooltip"
+																							title="Retweet">
+																							<span class="Icon Icon--retweet"></span> <span
+																								class="u-hiddenVisually">Retweet</span>
+																						</div>
+																						<div class="IconTextContainer">
+																					</button>
+																					<button
+																						class="ProfileTweet-actionButtonUndo js-actionButton js-actionRetweet"
+																						type="button" data-modal="ProfileTweet-retweet">Retweet</button>
+																				</div>
+																			</div>
+
+																		</div>
+																	</div>
+																</div> <% }}} %>
+															</li>
+														</ol>
+													</div>
+												</div>
+											</div>
+
+											<!-- -following List starts -->
+
+											<div id="timeline" ng-hide="followingFlag">
+												<br> <br /> <br /> <br />
+												<h2>People you are following</h2>
+												<br />
+												<div class="stream-container conversations-enabled "
+													ng-repeat="following in followingList">
+													<div class="stream-item js-new-items-bar-container"></div>
+													<div class="stream">
+														<ol id="stream-items-id"
+															class="stream-items js-navigable-stream">
+															<li id="stream-item-tweet-710935059583279104"
+																class="js-stream-item stream-item stream-item expanding-stream-item ">
+																<div
+																	class="tweet original-tweet js-original-tweet js-stream-tweet js-actionable-tweet js-profile-popup-actionable has-cards ">
+																	<div class="context"></div>
+																	<div class="content">
+																		<div class="stream-item-header">
+																			<a
+																				class="account-group js-account-group js-action-profile js-user-profile-link js-nav"
+																				href="#"> <img
+																				class="avatar js-action-profile-avatar" alt=""
+																				src="http://learngroup.org/assets/images/logos/default_male.jpg">
+																				<strong
+																				class="fullname js-action-profile-name show-popup-with-id">{{following.firstName}}
+																					{{following.lastName}}</strong><span
+																				class="username js-action-profile-name"> <b>{{following.twitterHandle}}</b>
+																			</span>
+																			</a> <small class="time"> <a
+																				class="tweet-timestamp js-permalink js-nav js-tooltip"
+																				href="#"> </a>
+																			</small>
+																		</div>
+
+																		<div class="js-tweet-text-container">
+																			<button
+																				class="user-actions-follow-button js-follow-btn follow-button btn small small-follow-btn"
+																				type="button" value="Following">
+																				<span class="button-text following-text">
+																					Following </span>
+
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ol>
+													</div>
+												</div>
+											</div>
+
+											<!-- following List ends here -->
+
+											<!-- -follower List starts -->
+
+											<div id="timeline" ng-hide="followerFlag">
+												<br> <br /> <br /> <br />
+												<h2>Your followers</h2>
+												<br />
+												<div class="stream-container conversations-enabled "
+													ng-repeat="follower in followerList">
+													<div class="stream-item js-new-items-bar-container"></div>
+													<div class="stream">
+														<ol id="stream-items-id"
+															class="stream-items js-navigable-stream">
+															<li id="stream-item-tweet-710935059583279104"
+																class="js-stream-item stream-item stream-item expanding-stream-item ">
+																<div
+																	class="tweet original-tweet js-original-tweet js-stream-tweet js-actionable-tweet js-profile-popup-actionable has-cards ">
+																	<div class="context"></div>
+																	<div class="content">
+																		<div class="stream-item-header">
+																			<a
+																				class="account-group js-account-group js-action-profile js-user-profile-link js-nav"
+																				href="#"> <img
+																				class="avatar js-action-profile-avatar" alt=""
+																				src="http://learngroup.org/assets/images/logos/default_male.jpg">
+																				<strong
+																				class="fullname js-action-profile-name show-popup-with-id">{{follower.firstName}}
+																					{{follower.lastName}}</strong><span
+																				class="username js-action-profile-name"> <b>{{follower.twitterHandle}}</b>
+																			</span>
+																			</a> <small class="time"> <a
+																				class="tweet-timestamp js-permalink js-nav js-tooltip"
+																				href="#"> </a>
+																			</small>
+																		</div>
+
+																		<div class="js-tweet-text-container">
+																			<button
+																				class="user-actions-follow-button js-follow-btn follow-button btn small small-follow-btn"
+																				type="button">
+																				<span class="button-text following-text">
+																					Following </span>
+																			</button>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ol>
+													</div>
+												</div>
+											</div>
+
+
+											<!-- follower List ends here -->
+
+
+
+										</div>
+										<div class="Grid-cell u-size1of3">
+											<div class="Grid Grid--withGutter">
+												<div class="Grid-cell">
+													<div
+														class="ProfileSidebar ProfileSidebar--withRightAlignment">
+														<div class="MoveableModule">
+															<div class="SidebarCommonModules"
+																ng-controller=whoToFollowController>
+																<% if(whoToFollowList.length>0){ %>
+																<div class="WhoToFollow is-visible">
+																	<div class="WhoToFollow-header">
+																		<br /> <br /> <br />
+																		<h3 class="WhoToFollow-title">Who to follow</h3>
+																		Â·
+																		<button class="btn-link js-refresh-suggestions"
+																			type="button">Refresh</button>
+																		Â· <a class="js-view-all-link" href="#"> View all </a>
+																	</div>
+																	<div class="WhoToFollow-users js-recommended-followers"
+																		style="opacity: 1;">
+																		<!--  who to follow repeats start -->
+																		<% for(var i = 0;i < whoToFollowList.length;i++){ %>
+																		<div
+																			class="js-account-summary account-summary js-actionable-user ">
+
+																			<div class="content">
+																				<a
+																					class="account-group js-recommend-link js-user-profile-link user-thumb"
+																					href="#"> <img
+																					class="avatar js-action-profile-avatar " alt=""
+																					src="https://pbs.twimg.com/profile_images/461964160838803457/8z9FImcv_normal.png">
+																					<span
+																					class="account-group-inner js-action-profile-name">
+																						<b class="fullname"><%=
+																							whoToFollowList[i].firstName %></b> <span
+																						class="Icon Icon--verified Icon--small"> <span
+																							class="u-hiddenVisually">Verified account</span>
+																					</span> <span class="username"><span
+																							class="js-username"><%=
+																								whoToFollowList[i].twitterHandle %></span> </span>
+																				</span>
+																				</a> <small class="metadata social-context"> </small>
+																				<div class="user-actions not-following not-muting">
+																					<button
+																						class="small-follow-btn follow-btn btn small follow-button js-recommended-item"
+																						type="button">
+																						<div
+																							class="js-action-follow follow-text action-text"
+																							ng-click="followSubmit('<%=whoToFollowList[i].emailId  %>');">
+																							<span class="Icon Icon--follow"></span> Follow
+																						</div>
+
+																					</button>
+																				</div>
+																			</div>
+																		</div>
+																		<% } %>
+																	</div>
+																	<!--  who to follow repeats ends -->
+																	<div class="WhoToFollow-footer">
+																		<a class="js-find-friends-link" href="#">Find
+																			friends</a>
+																	</div>
+																</div>
+																<% } %>
+																<div
+																	class="Footer module roaming-module Footer--slim Footer--blankBackground">
+																	<div class="flex-module">
+																		<div class="flex-module-inner js-items-container">
+																			<ul class="u-cf">
+																				<li class="Footer-item Footer-copyright copyright">Â©
+																					2016 Twitter</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div ng-hide="searchView">
+				<br /> <br />
+				<div ng-repeat="tweet in searchTagTweets">
+					<div class="row">
+						&nbsp;
+						<div class="col-sm-9">
+							<div class="well">
+								<p>
+									<b>{{tweet.firstName}} {{tweet.lastName}}</b> {{
+									tweet.twitterHandle }}
+								</p>
+								<img
+									src="http://indy100.independent.co.uk/image/10993-xki6wt.jpg"
+									class="img-circle" height="55" width="55" alt="Avatar">
+								{{tweet.tweetText }}
+							</div>
+						</div>
+						<div class="col-sm-3"></div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

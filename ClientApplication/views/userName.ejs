@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='twitterApp' ng-controller='signupController'>
+<head>
+<title>Choose a username</title>
+<link rel='stylesheet' href='./stylesheets/style.css' />
+<script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!-- Loading the AngularJS file from /public/angularJS folder -->
+<script src="angularjs/angular_start.js"></script>
+<script src="angularjs/signupController.js"></script>
+</head>
+<body>
+	<div class="signup-wrapper">
+	<div class="StreamsHero-image"
+				style="height: 50px;background-image: url(https://abs.twimg.com/a/1457130698/img/t1/lohp_streams_header_bg_v4.png);">
+	</div>
+		<h1>Choose a username</h1>
+		<p class="invite-landing-desc">Don't worry, you can always change it later.</p>
+		<form id="phx-signup-form" method="POST" action='/userHome'
+			class='afterContact'>
+			<div class="textbox">
+				<div class="prompt name">
+					<div class="field" data-fieldname="name">
+						 <input id="userName" class="" type="text"
+							placeholder="Username" aria-required="true" maxlength="20"
+							name="userName" value="" autocomplete="off" ng-model='username'><br /> <br />
+							<p style="color:red;"><b><%= typeof errorMessage!='undefined' ? errorMessage+"" : '' %></b></p>
+							<br/><br/>
+						<div class="sign-up-box">
+							<button id="submit_button" class="submit button signup"
+								name="submit" ng-click="submit();">Next</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+		</div>
+	</div>
+</body>
+</html>
